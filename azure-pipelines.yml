@@ -14,6 +14,12 @@ steps:
 - script: md tools
   displayName: 'Create tools directory'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: drop
+  displayName: 'Publish build artifacts'
+
 - powershell: |
     Invoke-WebRequest `
       -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe `
@@ -41,3 +47,7 @@ steps:
     SolutionPath: $(solution.path)
     SolutionName: $(solution.name)
   displayName: 'Solution Packager: pack solution'
+
+  - task PublishBuildArtifacts@1
+
+
