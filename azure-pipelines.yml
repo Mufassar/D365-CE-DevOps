@@ -48,6 +48,4 @@ steps:
     SolutionName: $(solution.name)
   displayName: 'Solution Packager: pack solution'
 
-  - task PublishBuildArtifacts@1
-
 
